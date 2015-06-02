@@ -10,10 +10,16 @@ gulp.task('scripts', function(){
 });
 
 // Styles task
-// 
+// Uglifies 
 gulp.task('styles', function(){
 	console.log('run styles');
 });
 
+// Watch task
+// Watches JS
+gulp.task('watch', function(){
+	gulp.watch('js/*.js', ['scripts']);
+});
 
-gulp.task('default', ['scripts', 'styles']);
+
+gulp.task('default', ['scripts', 'styles', 'watch']);

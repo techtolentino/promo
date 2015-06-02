@@ -3,7 +3,7 @@
 var gulp = require('gulp'),
 	uglify = require('gulp-uglify'),
 	sass = require('gulp-sass'),
-	livereload = require('gulp-livereload');
+	webserver = require('gulp-webserver');
 
 // Scripts task
 // Uglifies JS
@@ -20,19 +20,29 @@ gulp.task('styles', function(){
 	.pipe(sass({
 		style: 'compressed'
 	}))
-	.pipe(gulp.dest('css/'))
-	.pipe(livereload());
+	.pipe(gulp.dest('css/'));
+});
+
+// HTML task
+gulp.task('html', function() {
+  gulp.src('*.html');
+});
+
+// Server
+gulp.task('webserver', function() {
+  gulp.src('./')
+    .pipe(webserver({
+      livereload: true,
+      open: true
+    }));
 });
 
 // Watch tasks
 // Watches Js and Sass
 gulp.task('watch', function(){
-	
-	var server = livereload();
-
 	gulp.watch('js/*.js', ['scripts']);
 	gulp.watch('sass/*.scss', ['styles']);
 });
 
 
-gulp.task('default', ['scripts', 'styles', 'watch']);
+gulp.task('default', ['scripts', 'styles', 'html', 'watch', 'webserver']);

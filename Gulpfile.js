@@ -14,7 +14,9 @@ gulp.task('scripts', function(){
 // Uglifies 
 gulp.task('styles', function(){
 	gulp.src('sass/*.scss')
-	.pipe(sass())
+	.pipe(sass({
+		style: 'compressed'
+	}))
 	.pipe(gulp.dest('css/'));
 });
 
@@ -22,6 +24,7 @@ gulp.task('styles', function(){
 // Watches JS
 gulp.task('watch', function(){
 	gulp.watch('js/*.js', ['scripts']);
+	gulp.watch('sass/*.scss', ['styles']);
 });
 
 

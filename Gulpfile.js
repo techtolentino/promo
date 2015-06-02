@@ -15,7 +15,7 @@ gulp.task('scripts', function(){
 gulp.task('styles', function(){
 	gulp.src('sass/*.scss')
 	.pipe(sass())
-	.pipe(gulp.dest('./css/'));
+	.pipe(gulp.dest('css/'));
 });
 
 // Watch task

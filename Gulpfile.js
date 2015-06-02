@@ -1,9 +1,12 @@
+
+// Variable chain
 var gulp = require('gulp'),
 	uglify = require('gulp-uglify'),
-	sass = require('gulp-sass');
+	sass = require('gulp-sass'),
+	livereload = require('gulp-livereload');
 
 // Scripts task
-// Uglifies
+// Uglifies JS
 gulp.task('scripts', function(){
 	gulp.src('js/*.js')
 	.pipe(uglify())
@@ -11,18 +14,22 @@ gulp.task('scripts', function(){
 });
 
 // Styles task
-// Uglifies 
+// Uglifies Sass
 gulp.task('styles', function(){
 	gulp.src('sass/*.scss')
 	.pipe(sass({
 		style: 'compressed'
 	}))
-	.pipe(gulp.dest('css/'));
+	.pipe(gulp.dest('css/'))
+	.pipe(livereload());
 });
 
-// Watch task
-// Watches JS
+// Watch tasks
+// Watches Js and Sass
 gulp.task('watch', function(){
+	
+	var server = livereload();
+
 	gulp.watch('js/*.js', ['scripts']);
 	gulp.watch('sass/*.scss', ['styles']);
 });

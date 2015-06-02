@@ -1,5 +1,6 @@
 var gulp = require('gulp'),
-	uglify = require('gulp-uglify');
+	uglify = require('gulp-uglify'),
+	sass = require('gulp-sass');
 
 // Scripts task
 // Uglifies
@@ -12,7 +13,9 @@ gulp.task('scripts', function(){
 // Styles task
 // Uglifies 
 gulp.task('styles', function(){
-	console.log('run styles');
+	gulp.src('sass/*.scss')
+	.pipe(sass())
+	.pipe(gulp.dest('./css/'));
 });
 
 // Watch task

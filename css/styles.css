@@ -1,0 +1,12 @@
+body {
+  background-color: #0F5175;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; }
+
+.wrapper {
+  display: block;
+  margin: 0 auto;
+  max-width: 900px;
+  width: 100%;
+  background-color: #D1DAD5; }
